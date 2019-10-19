@@ -1,0 +1,204 @@
+<CustomControls:WindowBase x:Class="Phoenix.WPF.RepositoryMaterialsAndItemsWindow"
+                           PreviewKeyDown="WindowBasePreviewKeyDown"
+                           MinHeight="600"
+                           MinWidth="700"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           Style="{DynamicResource ResizableDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundRepositoryMaterialsAndItems.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Content="{Binding Path=Submit, Source={StaticResource SharedResources}}"
+                            Name="btnSubmit"
+                            Click="BtnSubmitClick"
+                            IsDefault="True"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=Delete, Source={StaticResource SharedResources}}"
+                            Name="btnDelete"
+                            Click="BtnDeleteClick"
+                            x:FieldModifier="private" />
+                </StackPanel>
+
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10">
+                    <ComboBox Name="cmbEntryMode"
+                              Tag="{Binding Path=EntryMode, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                              Width="265"
+                              HorizontalAlignment="Left"
+                              SelectionChanged="CmbEntryModeSelectionChanged"
+                              x:FieldModifier="private">
+                        <ComboBoxItem
+Content="{Binding Path=EntryMaterial, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        <ComboBoxItem
+Content="{Binding Path=EntryOther, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Name="pnlInputs"
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            x:FieldModifier="private">
+                    <StackPanel Margin="0,0,5,0">
+                        <ComboBox Name="cmbItems"
+                                  Tag="{Binding Path=ItemName, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                  Width="275"
+                                  HorizontalAlignment="Left"
+                                  SelectionChanged="CmbItemsSelectionChanged"
+                                  x:FieldModifier="private" />
+                        <ComboBox Name="cmbMaterials"
+                                  Tag="{Binding Path=MaterialName, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                  Width="275"
+                                  HorizontalAlignment="Left"
+                                  SelectionChanged="CmbMaterialsSelectionChanged"
+                                  x:FieldModifier="private" />
+                        <ComboBox Name="cmbActionType"
+                                  Margin="0,5"
+                                  Tag="{Binding Path=ActionType, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                  Width="166"
+                                  HorizontalAlignment="Left"
+                                  SelectionChanged="CmbActionTypeSelectionChanged"
+                                  x:FieldModifier="private">
+                            <ComboBoxItem
+Content="{Binding Path=RequestFromRepository, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                            <ComboBoxItem
+Content="{Binding Path=ReturnToRepository, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        </ComboBox>
+                        <TextBox Margin="0,0,0,5"
+                                 Tag="{Binding Path=AmountDefault, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                 x:Name="tbAmount"
+                                 Width="200"
+                                 MaxLength="6"
+                                 TextChanged="InputChanged"
+                                 HorizontalAlignment="Left"
+                                 x:FieldModifier="private" />
+                    </StackPanel>
+                    <StackPanel>
+                        <ComboBox Name="cmbLabs"
+                                  Tag="{Binding Path=LabName, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                  SelectionChanged="SelectionChanged"
+                                  Width="208"
+                                  HorizontalAlignment="Left"
+                                  x:FieldModifier="private" />
+                        <TextBox x:Name="tbTargetApplicant"
+                                 Width="228"
+                                 Margin="0,5,0,0"
+                                 Tag="{Binding Path=Transferee, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                 MaxLength="32"
+                                 TextChanged="InputChanged"
+                                 HorizontalAlignment="Left"
+                                 x:FieldModifier="private" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Name="pnlFilter"
+                            Grid.Row="2"
+                            Orientation="Horizontal"
+                            Margin="0,30,0,10"
+                            x:FieldModifier="private">
+                    <ComboBox Name="cmbFilterBy"
+                              Tag="{Binding Path=FilterBy, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                              Width="265"
+                              HorizontalAlignment="Left"
+                              SelectionChanged="CmbFilterBySelectionChanged"
+                              x:FieldModifier="private">
+                        <ComboBoxItem
+Content="{Binding Path=OnlyToday, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        <ComboBoxItem
+Content="{Binding Path=OnlyYesterdayAndToday, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        <ComboBoxItem
+Content="{Binding Path=OnlyThisWeek, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        <ComboBoxItem
+Content="{Binding Path=OnlyThisMonth, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                        <ComboBoxItem
+Content="{Binding Path=All, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                    </ComboBox>
+                </StackPanel>
+                <my:PhoenixDataGrid Grid.Row="3"
+                                    x:Name="dgResults"
+                                    SelectionChanged="DgResultsSelectionChanged"
+                                    Visibility="Collapsed"
+                                    x:FieldModifier="private">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn
+Header="{Binding Path=MaterialID, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Visibility="Collapsed"
+Binding="{Binding StringMaterialID}" />
+                        <DataGridTextColumn
+Header="{Binding Path=ItemID, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Visibility="Collapsed"
+Binding="{Binding StringItemID}" />
+                        <DataGridTextColumn
+Header="{Binding Path=AmountCount, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Binding="{Binding StringAmount}" />
+                        <DataGridTextColumn
+Header="{Binding Path=LabName, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Binding="{Binding StringLabID}" />
+                        <DataGridTextColumn
+Header="{Binding Path=RegisteredBy, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Binding="{Binding StringRegisteredBy}" />
+                        <DataGridTextColumn
+Header="{Binding Path=RegisteredOn, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Binding="{Binding StringRegisteredOn}" />
+                        <DataGridTextColumn
+Header="{Binding Path=TargetApplicant, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Binding="{Binding TargetApplicant}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Grid.Row="3"
+                           Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NoMaterials, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                           Name="tbNoResults"
+                           x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

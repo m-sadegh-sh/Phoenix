@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActionType" xml:space="preserve">
+    <value>Action Type</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="AmountBy" xml:space="preserve">
+    <value>Amount as {0}</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="CriticalAmount" xml:space="preserve">
+    <value>With out {0} {1} {2} of the warehouse, the inventory value will be lower than defined.
+If you should need to stock boost {2}. Are you willing to make the transition?</value>
+  </data>
+  <data name="DeliverTarget" xml:space="preserve">
+    <value>Deliverer</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Register Allocations/Returns Materials and Items to/from Labs</value>
+  </data>
+  <data name="FilterBy" xml:space="preserve">
+    <value>Filter By</value>
+  </data>
+  <data name="InvalidAmount" xml:space="preserve">
+    <value>Remove is not possible from the repository because of less inventory (About {0} {1}) of requested amount.</value>
+  </data>
+  <data name="LabName" xml:space="preserve">
+    <value>Laboratory Name</value>
+  </data>
+  <data name="MaterialID" xml:space="preserve">
+    <value>Material Name</value>
+  </data>
+  <data name="MaterialName" xml:space="preserve">
+    <value>Material Name</value>
+  </data>
+  <data name="NoMaterialsAndItems" xml:space="preserve">
+    <value>No Chemical Materials/Items was submitted into the repositry to be able to Allocating/Returning.</value>
+  </data>
+  <data name="NoMaterialResults" xml:space="preserve">
+    <value>No Materials ever was sent out of repository.</value>
+  </data>
+  <data name="OnlyYesterdayAndToday" xml:space="preserve">
+    <value>Today and Yesterday</value>
+  </data>
+  <data name="OnlyThisMonth" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="OnlyThisWeek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="OnlyToday" xml:space="preserve">
+    <value>Only Today</value>
+  </data>
+  <data name="RegisteredBy" xml:space="preserve">
+    <value>Registered By</value>
+  </data>
+  <data name="RegisteredOn" xml:space="preserve">
+    <value>Registered On</value>
+  </data>
+  <data name="RequestFromRepository" xml:space="preserve">
+    <value>Request from Repository</value>
+  </data>
+  <data name="ReturnToRepository" xml:space="preserve">
+    <value>Return to Repository</value>
+  </data>
+  <data name="TargetApplicant" xml:space="preserve">
+    <value>Deliverer/Transferee</value>
+  </data>
+  <data name="TargetNull" xml:space="preserve">
+    <value>{0} name can't be empty.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Repository Materials and Items</value>
+  </data>
+  <data name="Transferee" xml:space="preserve">
+    <value>Transferee</value>
+  </data>
+  <data name="AmountDefault" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="AmountCount" xml:space="preserve">
+    <value>Amount/Count</value>
+  </data>
+  <data name="EntryMaterial" xml:space="preserve">
+    <value>Submit Materials</value>
+  </data>
+  <data name="EntryMode" xml:space="preserve">
+    <value>Entry Mode</value>
+  </data>
+  <data name="EntryItems" xml:space="preserve">
+    <value>Submit Items</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>Item Name</value>
+  </data>
+  <data name="Requested" xml:space="preserve">
+    <value>{0} {1} Requested</value>
+  </data>
+  <data name="Returned" xml:space="preserve">
+    <value>{0} {1} Returned</value>
+  </data>
+  <data name="NoItemResults" xml:space="preserve">
+    <value>No Items ever was sent out of repository.</value>
+  </data>
+  <data name="CriticalCount" xml:space="preserve">
+    <value>By removing {0} {1} {2} from the repository, the inventory will be lower than definined value.
+If you need, you can increase inventories later. Do you want to transfer?</value>
+  </data>
+  <data name="InvalidCount" xml:space="preserve">
+    <value>Remove is not possible from the repository because of less inventory (About {0} {1}) of requested amount.</value>
+  </data>
+  <data name="NoLabs" xml:space="preserve">
+    <value>For Allocating/Returning, the name of the lab is necessary. No lab was submitted for this purpose.</value>
+  </data>
+</root>

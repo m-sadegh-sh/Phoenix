@@ -1,0 +1,222 @@
+﻿<CustomControls:WindowBase x:Class="Phoenix.WPF.PropStatusWindow"
+                           Height="400"
+                           Width="600"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           Style="{DynamicResource FixedAndAutoSizeDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundPropStatus.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource PropStatusResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource PropStatusResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Content="{Binding Path=Search, Source={StaticResource PropStatusResources}}"
+                            Name="btnSearch"
+                            Click="BtnSearchClick"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=Submit, Source={StaticResource SharedResources}}"
+                            Name="btnSubmit"
+                            Click="BtnSubmitClick"
+                            IsDefault="True"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=CancelChanges, Source={StaticResource SharedResources}}"
+                            Name="btnCancelChanges"
+                            Click="BtnCancelChangesClick"
+                            x:FieldModifier="private" />
+                </StackPanel>
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Name="spDetails"
+                            Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10"
+                            Visibility="Collapsed"
+                            x:FieldModifier="private">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   Text="{Binding Path=Name, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}" />
+                        <TextBlock Name="tbName"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   Style="{DynamicResource ReadOnlyBlock}"
+                                   x:FieldModifier="private">
+                        </TextBlock>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="1"
+                                   Text="{Binding Path=PropNo, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}" />
+                        <TextBlock Name="tbPropNo"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   Style="{DynamicResource ReadOnlyBlock}"
+                                   x:FieldModifier="private" />
+                    </Grid>
+                    <Grid Style="{DynamicResource NextSec}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   Text="{Binding Path=SerialNo, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}" />
+                        <TextBlock Name="tbSerialNo"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   Style="{DynamicResource ReadOnlyBlock}"
+                                   x:FieldModifier="private" />
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="1"
+                                   Text="{Binding Path=CreateDate, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}" />
+                        <TextBlock Name="tbCreateDate"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   Style="{DynamicResource ReadOnlyBlock}"
+                                   x:FieldModifier="private" />
+                    </Grid>
+                </StackPanel>
+                <StackPanel Name="spType"
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10"
+                            Visibility="Collapsed"
+                            x:FieldModifier="private">
+                    <StackPanel>
+                        <ComboBox Name="cmbStatus"
+                                  Tag="{Binding Path=Status, Source={StaticResource PropStatusResources}}"
+                                  SelectionChanged="SelectionChanged"
+                                  Width="208"
+                                  HorizontalAlignment="Left"
+                                  x:FieldModifier="private">
+                            <ComboBoxItem Content="{Binding Path=Free, Source={StaticResource PropStatusResources}}" />
+                            <ComboBoxItem
+Content="{Binding Path=Corrupted, Source={StaticResource PropStatusResources}}" />
+                            <ComboBoxItem
+Content="{Binding Path=Borrowed, Source={StaticResource PropStatusResources}}" />
+                            <ComboBoxItem Content="{Binding Path=Missed, Source={StaticResource PropStatusResources}}" />
+                            <ComboBoxItem Content="{Binding Path=Used, Source={StaticResource PropStatusResources}}" />
+                            <ComboBoxItem
+Content="{Binding Path=DeliveredToRepository, Source={StaticResource PropStatusResources}}" />
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Name="spInputs"
+                            Grid.Row="2"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10"
+                            Visibility="Collapsed"
+                            x:FieldModifier="private">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="tbOutDate"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   Text="{Binding Path=BorrowStartDate, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}"
+                                   x:FieldModifier="private" />
+                        <TextBlock Name="tbInDate"
+                                   Grid.Column="0"
+                                   Grid.Row="1"
+                                   Text="{Binding Path=BorrowReturnDate, Source={StaticResource PropStatusResources}}"
+                                   Style="{DynamicResource For}"
+                                   x:FieldModifier="private" />
+                        <CustomControls:ComboBasedDatePicker Grid.Column="1"
+                                                             Grid.Row="0"
+                                                             x:Name="dtpOutDate"
+                                                             Margin="0,0,0,5"
+                                                             ValueChanged="ValueChanged"
+                                                             x:FieldModifier="private" />
+                        <CustomControls:ComboBasedDatePicker Grid.Column="1"
+                                                             Grid.Row="1"
+                                                             x:Name="dtpInDate"
+                                                             ValueChanged="ValueChanged"
+                                                             x:FieldModifier="private" />
+                    </Grid>
+                    <StackPanel Name="SecLead"
+                                Margin="5,0,0,0"
+                                x:FieldModifier="private">
+                        <TextBox x:Name="tbDescription"
+                                 Tag="{Binding Path=Description, Source={StaticResource SharedResources}}"
+                                 Width="250"
+                                 Height="100"
+                                 MaxLength="1024"
+                                 Style="{StaticResource Multiline}"
+                                 TextChanged="InputChanged"
+                                 x:FieldModifier="private" />
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Grid.Row="3"
+                           Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NothingSelected, Source={StaticResource PropStatusResources}}"
+                           Name="tbNoResults"
+                           x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

@@ -1,0 +1,147 @@
+<CustomControls:WindowBase x:Class="Phoenix.WPF.LabsWindow"
+                           MinHeight="500"
+                           MinWidth="700"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           Style="{DynamicResource ResizableDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}"
+                           PreviewKeyDown="WindowBasePreviewKeyDown">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundLabs.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource LabsResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource LabsResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+                <DockPanel Style="{DynamicResource SearchContainer}"
+                           Grid.Column="4">
+                    <TextBox Style="{DynamicResource SearchTextBox}"
+                             Tag="{Binding Path=SearchBy, Source={StaticResource LabsResources}}"
+                             Name="cutTextBox"
+                             TextChanged="CutTextBoxTextChanged"
+                             x:FieldModifier="private">
+                    </TextBox>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Content="{Binding Path=Submit, Source={StaticResource SharedResources}}"
+                            Name="btnSubmit"
+                            Click="BtnSubmitClick"
+                            IsDefault="True"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=CancelChanges, Source={StaticResource SharedResources}}"
+                            Name="btnCancelChanges"
+                            Click="BtnCancelChangesClick"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=Delete, Source={StaticResource SharedResources}}"
+                            Name="btnDelete"
+                            Click="BtnDeleteClick"
+                            x:FieldModifier="private" />
+                </StackPanel>
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBox x:Name="tbName"
+                                 Width="250"
+                                 Tag="{Binding Path=Name, Source={StaticResource LabsResources}}"
+                                 MaxLength="64"
+                                 TextChanged="InputChanged"
+                                 x:FieldModifier="private" />
+                        <TextBox x:Name="tbPlaqueNo"
+                                 Margin="0,5,0,0"
+                                 IsEnabled="False"
+                                 HorizontalAlignment="Left"
+                                 Width="218"
+                                 Tag="{Binding Path=PlaqueNo, Source={StaticResource LabsResources}}"
+                                 x:FieldModifier="private" />
+                        <ComboBox Name="cmbCategories"
+                                  SelectionChanged="SelectionChanged"
+                                  Tag="{Binding Path=CategoryName, Source={StaticResource PropsResources}}"
+                                  Margin="0,5,0,0"
+                                  Width="208"
+                                  HorizontalAlignment="Left"
+                                  x:FieldModifier="private" />
+                    </StackPanel>
+                    <StackPanel Margin="5,0,0,0">
+                        <TextBox x:Name="tbDescription"
+                                 Width="250"
+                                 MaxLength="1024"
+                                 Height="100"
+                                 Tag="{Binding Path=Description, Source={StaticResource SharedResources}}"
+                                 Style="{StaticResource Multiline}"
+                                 TextChanged="InputChanged"
+                                 x:FieldModifier="private" />
+                    </StackPanel>
+                </StackPanel>
+                <my:PhoenixDataGrid Grid.Row="1"
+                                    x:Name="dgResults"
+                                    MouseDoubleClick="DgResultsMouseDoubleClick"
+                                    SelectionChanged="DgResultsSelectionChanged"
+                                    x:FieldModifier="private">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn Header="{Binding Path=Name, Source={StaticResource LabsResources}}"
+                                            Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="{Binding Path=CategoryName, Source={StaticResource LabsResources}}"
+                                            Binding="{Binding StringCategoryID}" />
+                        <DataGridTextColumn Header="{Binding Path=PlaqueNo, Source={StaticResource LabsResources}}"
+                                            Binding="{Binding PlaqueNo}" />
+                        <DataGridTextColumn Header="{Binding Path=CountOfProps, Source={StaticResource LabsResources}}"
+                                            Binding="{Binding CountOfProps}" />
+                        <DataGridTextColumn Header="{Binding Path=CreatedOn, Source={StaticResource LabsResources}}"
+                                            Binding="{Binding StringCreatedOn}" />
+                        <DataGridTextColumn
+Header="{Binding Path=LastModifiedOn, Source={StaticResource LabsResources}}"
+Binding="{Binding StringLastModifiedOn}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Grid.Row="1"
+                           Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NoResults, Source={StaticResource LabsResources}}"
+                           Name="tbNoResults"
+                           x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

@@ -1,0 +1,985 @@
+<CustomControls:WindowBase xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           x:Class="Phoenix.WPF.MainWindow"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:Commands="clr-namespace:Phoenix.WPF.Commands"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:Wpf="clr-namespace:Phoenix.Infrastructure.Wpf;assembly=Phoenix.Infrastructure"
+                           Title="{Binding Path=Text, ElementName=tbTitle}"
+                           WindowState="Maximized"
+                           WindowStyle="None"
+                           ResizeMode="NoResize">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Icons/WinForms.ico" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource MainResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource MainResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+                <StackPanel Visibility="Hidden"
+                            Grid.Column="4"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Name="spLinks"
+                            x:FieldModifier="private">
+                    <TextBlock Name="tbNewMessages"
+                               Style="{DynamicResource NonContentText}"
+                               x:FieldModifier="private" />
+                    <TextBlock Visibility="Collapsed"
+                               Style="{DynamicResource Separator}"
+                               Name="tbSep1"
+                               x:FieldModifier="private" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.ShowNotificationsWindow">
+                            <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource NotificationsResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock Style="{DynamicResource NonContentText}"
+                               Name="tbUserName"
+                               x:FieldModifier="private" />
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.OpenAccountWindow">
+                            <Run Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource AccountResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.OpenAboutWindow">
+                            <Run Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource AboutResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.OpenBackupWindow">
+                            <Run Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource BackupResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.OpenRestoreWindow">
+                            <Run Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource RestoreResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock Style="{DynamicResource Separator}" />
+                    <TextBlock>
+                        <Hyperlink Command="Commands:CommandLibrary.ShutdownPhoenix">
+                            <Run Text="{Binding Path=Exit, Mode=OneWay, Source={StaticResource SharedResources}}" />
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                </StackPanel>
+                <TextBlock Grid.Column="0"
+                           Name="tbDate"
+                           Style="{DynamicResource NonContentText}"
+                           x:FieldModifier="private" />
+                <TextBlock Grid.Column="1"
+                           Style="{DynamicResource NonContentText}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Text="{Binding Path=CompanyName, Source={StaticResource MainResources}}" />
+                <TextBlock Grid.Column="2"
+                           Style="{DynamicResource NonContentText}"
+                           Text="{Binding Path=BetaVersion, Source={StaticResource MainResources}}" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Menu Name="menu"
+                  Visibility="Hidden"
+                  DockPanel.Dock="Top"
+                  FontFamily="{Binding ElementName=tbTitle, Path=FontFamily}"
+                  x:FieldModifier="private">
+                <MenuItem Header="{Binding Path=ManagementHeader, Source={StaticResource MainResources}}">
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource NotificationsResources}}"
+                              Command="Commands:CommandLibrary.ShowNotificationsWindow" />
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource CategoriesResources}}"
+                              Command="Commands:CommandLibrary.OpenCategoriesWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource PropsResources}}"
+                              Command="Commands:CommandLibrary.OpenPropsWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource PropStatusResources}}"
+                              Command="Commands:CommandLibrary.OpenPropsStatusWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource LabsResources}}"
+                              Command="Commands:CommandLibrary.OpenLabsWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource LabPropsResources}}"
+                              Command="Commands:CommandLibrary.OpenLabPropsWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource MaterialsResources}}"
+                              Command="Commands:CommandLibrary.OpenMaterialsWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource ItemsResources}}"
+                              Command="Commands:CommandLibrary.OpenItemsWindow">
+                    </MenuItem>
+                    <MenuItem
+Header="{Binding Path=Title, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+Command="Commands:CommandLibrary.OpenRepositoryMaterialsAndItemsWindow">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                              Command="Commands:CommandLibrary.ShutdownPhoenix">
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{Binding Path=Title, Source={StaticResource SearchResources}}"
+                          Command="Commands:CommandLibrary.OpenSearchWindow">
+
+                    <MenuItem Header="{Binding Path=InProps, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInProps" />
+
+                    <MenuItem Header="{Binding Path=InMaterials, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInMaterials" />
+
+                    <MenuItem Header="{Binding Path=InRepositoryMaterials, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInRepositoryMaterials" />
+
+                    <MenuItem Header="{Binding Path=InItems, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInItems" />
+
+                    <MenuItem Header="{Binding Path=InRepositoryItems, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInRepositoryItems" />
+
+                    <MenuItem Header="{Binding Path=InLabs, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInLabs" />
+
+                    <MenuItem Header="{Binding Path=InLabProps, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInLabProps" />
+
+                    <MenuItem Header="{Binding Path=InLogs, Source={StaticResource SearchResources}}"
+                              Command="Commands:CommandLibrary.OpenSearchWindowInLogs" />
+                </MenuItem>
+                <MenuItem Header="{Binding Path=OptionsHeader, Source={StaticResource MainResources}}">
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource AccountResources}}"
+                              Command="Commands:CommandLibrary.OpenAccountWindow">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource BackupResources}}"
+                              Command="Commands:CommandLibrary.OpenBackupWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource RestoreResources}}"
+                              Command="Commands:CommandLibrary.OpenRestoreWindow">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource RolesResources}}"
+                              Command="Commands:CommandLibrary.OpenRolesWindow">
+                    </MenuItem>
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource UsersResources}}"
+                              Command="Commands:CommandLibrary.OpenUsersWindow">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource LogsResources}}"
+                              Command="Commands:CommandLibrary.OpenLogsWindow">
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource SettingsResources}}"
+                              Command="Commands:CommandLibrary.OpenSettingsWindow">
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{Binding Path=HelpHeader, Source={StaticResource MainResources}}">
+                    <MenuItem Header="{Binding Path=Title, Source={StaticResource AboutResources}}"
+                              Command="Commands:CommandLibrary.OpenAboutWindow" />
+                </MenuItem>
+            </Menu>
+            <ScrollViewer Style="{DynamicResource LabImage}"
+                          VerticalScrollBarVisibility="Auto">
+                <WrapPanel Name="wpWindowContent"
+                           Visibility="Hidden"
+                           Wpf:VisibilityAnimation.AnimationType="Fade"
+                           HorizontalAlignment="Center"
+                           Margin="10"
+                           VerticalAlignment="Center">
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpCategories"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource CategoriesResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource CategoriesResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundCategories.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontFamily="Segoe UI"
+                                           Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenCategoriesWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenCategoriesWindow"
+                                               Command="Commands:CommandLibrary.OpenCategoriesWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource CategoriesResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpProps"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource PropsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource PropsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundProps.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenPropsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenPropsWindow"
+                                               Command="Commands:CommandLibrary.OpenPropsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource PropsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpPropsStatus"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource PropStatusResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource PropStatusResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundPropStatus.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenPropsStatusWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenPropsStatusWindow"
+                                               Command="Commands:CommandLibrary.OpenPropsStatusWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource PropStatusResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpLabs"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource LabsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource LabsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundLabs.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenLabsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenLabsWindow"
+                                               Command="Commands:CommandLibrary.OpenLabsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource LabsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpLabProps"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource LabPropsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource LabPropsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundLabProps.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenLabPropsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenLabPropsWindow"
+                                               Command="Commands:CommandLibrary.OpenLabPropsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource LabPropsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpMaterials"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource MaterialsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource MaterialsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundMaterials.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenMaterialsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenMaterialsWindow"
+                                               Command="Commands:CommandLibrary.OpenMaterialsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource MaterialsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpItems"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource ItemsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource ItemsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundItems.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenItemsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenItemsWindow"
+                                               Command="Commands:CommandLibrary.OpenItemsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource ItemsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpRepositoryMaterialsAndItems"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource RepositoryMaterialsAndItemsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundRepositoryMaterialsAndItems.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenRepositoryMaterialsAndItemsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenRepositoryMaterialsAndItemsWindow"
+                                               Command="Commands:CommandLibrary.OpenRepositoryMaterialsAndItemsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource RepositoryMaterialsAndItemsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpSearch"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource SearchResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource SearchResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundSearch.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenSearchWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenSearchWindow"
+                                               Command="Commands:CommandLibrary.OpenSearchWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource SearchResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Width="{Binding Path=ActualWidth, ElementName=wpWindowContent}"
+                               Height="1"
+                               Margin="0,5">
+                        <DockPanel.Background>
+                            <LinearGradientBrush EndPoint="1,0.5"
+                                                 StartPoint="0,0.5">
+                                <GradientStop Color="Transparent"
+                                              Offset="0" />
+                                <GradientStop Color="Transparent"
+                                              Offset="1" />
+                                <GradientStop Color="#FF4C4C4C"
+                                              Offset="0.5" />
+                            </LinearGradientBrush>
+                        </DockPanel.Background>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpRoles"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource RolesResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource RolesResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundRoles.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenRolesWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenRolesWindow"
+                                               Command="Commands:CommandLibrary.OpenRolesWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource RolesResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpUsers"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource UsersResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource UsersResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundUsers.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenUsersWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenUsersWindow"
+                                               Command="Commands:CommandLibrary.OpenUsersWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource UsersResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpLogs"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource LogsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource LogsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundLogs.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenLogsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenLogsWindow"
+                                               Command="Commands:CommandLibrary.OpenLogsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource LogsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                    <DockPanel Style="{DynamicResource SectionContainer}"
+                               Visibility="Hidden"
+                               Wpf:VisibilityAnimation.AnimationType="Fade"
+                               Name="dpSettings"
+                               x:FieldModifier="private">
+                        <Grid Margin="10,10,10,9">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"
+                                  Margin="5,5,5,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0"
+                                      Margin="0,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0"
+                                               Text="{Binding Path=Title, Source={StaticResource SettingsResources}}"
+                                               Style="{DynamicResource SectionTitle}" />
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Path=Description, Source={StaticResource SettingsResources}}"
+                                               Style="{DynamicResource SecDetailer}" />
+                                </Grid>
+                                <Image Grid.Column="1"
+                                       Source="/Resources/Images/SectionBackgroundSettings.png"
+                                       Width="48"
+                                       Height="48"
+                                       Stretch="Fill"
+                                       VerticalAlignment="Top" />
+                            </Grid>
+                            <Grid Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Margin="10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding ElementName=lbOpenSettingsWindow, Path=Command.InputGestures, Converter={StaticResource GestureConverter}}"
+                                           FontFamily="Segoe UI" />
+                                <TextBlock Grid.Column="2">
+                                    <Hyperlink Name="lbOpenSettingsWindow"
+                                               Command="Commands:CommandLibrary.OpenSettingsWindow">
+                                        <Run
+Text="{Binding Path=Title, Mode=OneWay, Source={StaticResource SettingsResources}}" />
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                </WrapPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

@@ -1,0 +1,505 @@
+﻿<CustomControls:WindowBase x:Class="Phoenix.WPF.RolesWindow"
+                           MinWidth="900"
+                           MinHeight="600"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           Style="{DynamicResource ResizableDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}"
+                           PreviewKeyDown="WindowBasePreviewKeyDown">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundRoles.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource RolesResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource RolesResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+                <DockPanel Style="{DynamicResource SearchContainer}"
+                           Grid.Column="4">
+                    <TextBox Style="{DynamicResource SearchTextBox}"
+                             Tag="{Binding Path=SearchBy, Source={StaticResource RolesResources}}"
+                             Name="cutTextBox"
+                             TextChanged="CutTextBoxTextChanged"
+                             x:FieldModifier="private">
+                    </TextBox>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Content="{Binding Path=Submit, Source={StaticResource SharedResources}}"
+                            Name="btnSubmit"
+                            Click="BtnSubmitClick"
+                            IsDefault="True"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=CancelChanges, Source={StaticResource SharedResources}}"
+                            Name="btnCancelChanges"
+                            Click="BtnCancelChangesClick"
+                            x:FieldModifier="private" />
+                    <Button Content="{Binding Path=Delete, Source={StaticResource SharedResources}}"
+                            Name="btnDelete"
+                            Click="BtnDeleteClick"
+                            x:FieldModifier="private" />
+                </StackPanel>
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <DockPanel Name="pnlInputs"
+                           Grid.Row="0"
+                           Margin="0,0,0,10"
+                           x:FieldModifier="private">
+                    <StackPanel DockPanel.Dock="Left">
+                        <TextBox x:Name="tbName"
+                                 Width="250"
+                                 Tag="{Binding Path=Name, Source={StaticResource RolesResources}}"
+                                 MaxLength="16"
+                                 TextChanged="InputChanged"
+                                 x:FieldModifier="private" />
+                        <TextBox x:Name="tbDescription"
+                                 Style="{StaticResource Multiline}"
+                                 Margin="0,5,0,0"
+                                 Width="250"
+                                 Height="100"
+                                 MaxLength="1024"
+                                 Tag="{Binding Path=Description, Source={StaticResource SharedResources}}"
+                                 TextChanged="InputChanged"
+                                 x:FieldModifier="private" />
+                    </StackPanel>
+                    <TabControl Height="200"
+                                Margin="5,0,0,0">
+                        <TabItem Header="{Binding Path=Categories, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbCategoriesDisplay"
+                                          Content="{Binding Path=CategoriesDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbCategoriesInsert"
+                                          Content="{Binding Path=CategoriesInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbCategoriesUpdate"
+                                          Content="{Binding Path=CategoriesUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbCategoriesDelete"
+                                          Content="{Binding Path=CategoriesDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Props, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbPropsDisplay"
+                                          Content="{Binding Path=PropsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbPropsInsert"
+                                          Content="{Binding Path=PropsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbPropsUpdate"
+                                          Content="{Binding Path=PropsUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbPropsDelete"
+                                          Content="{Binding Path=PropsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=PropStatus, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbPropStatusDisplay"
+                                          Content="{Binding Path=PropStatusDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbPropStatusUpdate"
+                                          Content="{Binding Path=PropStatusUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Materials, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbMaterialsDisplay"
+                                          Content="{Binding Path=MaterialsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbMaterialsInsert"
+                                          Content="{Binding Path=MaterialsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbMaterialsUpdate"
+                                          Content="{Binding Path=MaterialsUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbMaterialsDelete"
+                                          Content="{Binding Path=MaterialsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Items, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbItemsDisplay"
+                                          Content="{Binding Path=ItemsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbItemsInsert"
+                                          Content="{Binding Path=ItemsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbItemsUpdate"
+                                          Content="{Binding Path=ItemsUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbItemsDelete"
+                                          Content="{Binding Path=ItemsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem
+Header="{Binding Path=RepositoryMaterialsAndItems, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbRepositoryMaterialsAndItemsInsert"
+                                          Content="{Binding Path=RepositoryMaterialsAndItemsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRepositoryMaterialsAndItemsDelete"
+                                          Content="{Binding Path=RepositoryMaterialsAndItemsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Labs, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbLabsDisplay"
+                                          Content="{Binding Path=LabsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabsInsert"
+                                          Content="{Binding Path=LabsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabsUpdate"
+                                          Content="{Binding Path=LabsUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabsDelete"
+                                          Content="{Binding Path=LabsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=LabProps, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbLabPropsDisplay"
+                                          Content="{Binding Path=LabPropsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabPropsInsert"
+                                          Content="{Binding Path=LabPropsInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabPropsDelete"
+                                          Content="{Binding Path=LabPropsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Users, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbUsersDisplay"
+                                          Content="{Binding Path=UsersDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbUsersInsert"
+                                          Content="{Binding Path=UsersInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbUsersUpdate"
+                                          Content="{Binding Path=UsersUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbUsersDelete"
+                                          Content="{Binding Path=UsersDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Roles, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbRolesDisplay"
+                                          Content="{Binding Path=RolesDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRolesInsert"
+                                          Content="{Binding Path=RolesInsert, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRolesUpdate"
+                                          Content="{Binding Path=RolesUpdate, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRolesDelete"
+                                          Content="{Binding Path=RolesDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Logs, Source={StaticResource RolesResources}}">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbLogsDisplay"
+                                          Content="{Binding Path=LogsDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLogsDelete"
+                                          Content="{Binding Path=LogsDelete, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="{Binding Path=Search, Source={StaticResource RolesResources}}">
+                            <WrapPanel Orientation="Vertical">
+                                <CheckBox Margin="5"
+                                          Name="chbSearchDisplay"
+                                          Content="{Binding Path=SearchDisplay, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbPropsSearch"
+                                          Content="{Binding Path=PropsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabsSearch"
+                                          Content="{Binding Path=LabsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLabPropsSearch"
+                                          Content="{Binding Path=LabPropsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbMaterialsSearch"
+                                          Content="{Binding Path=MaterialsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbItemsSearch"
+                                          Content="{Binding Path=ItemsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRepositoryMaterialsSearch"
+                                          Content="{Binding Path=RepositoryMaterialsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbRepositoryItemsSearch"
+                                          Content="{Binding Path=RepositoryItemsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                                <CheckBox Margin="5"
+                                          Name="chbLogsSearch"
+                                          Content="{Binding Path=LogsSearch, Source={StaticResource RolesResources}}"
+                                          Checked="Checked"
+                                          Unchecked="Checked"
+                                          IsChecked="{x:Null}"
+                                          x:FieldModifier="private" />
+                            </WrapPanel>
+                        </TabItem>
+                    </TabControl>
+                </DockPanel>
+                <my:PhoenixDataGrid Grid.Row="1"
+                                    x:Name="dgvResults"
+                                    Visibility="Collapsed"
+                                    SelectionChanged="DgvResultsSelectionChanged"
+                                    MouseDoubleClick="DgvResultsMouseDoubleClick"
+                                    x:FieldModifier="private">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn Header="{Binding Path=Name, Source={StaticResource RolesResources}}"
+                                            Binding="{Binding Name}" />
+                        <DataGridTextColumn
+Header="{Binding Path=AccessibilityPercent, Source={StaticResource RolesResources}}"
+Binding="{Binding AccessibilityPercent}" />
+                        <DataGridTextColumn Header="{Binding Path=CreatedOn, Source={StaticResource RolesResources}}"
+                                            Binding="{Binding StringCreatedOn}" />
+                        <DataGridTextColumn
+Header="{Binding Path=LastModifiedOn, Source={StaticResource RolesResources}}"
+Binding="{Binding StringLastModifiedOn}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Grid.Row="1"
+                           Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NoResults, Source={StaticResource RolesResources}}"
+                           Name="tbNoResults"
+                           x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

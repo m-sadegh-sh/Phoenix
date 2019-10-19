@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D600CF43-C808-4A83-B9B0-3255A9191172}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Phoenix.Resources</RootNamespace>
+    <AssemblyName>Phoenix.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriesForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoriesForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountForm.en-GB.Designer.cs">
+      <DependentUpon>AccountForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CategoriesForm.en-GB.Designer.cs">
+      <DependentUpon>CategoriesForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AboutForm.en-GB.Designer.cs">
+      <DependentUpon>AboutForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Messages.en-GB.Designer.cs">
+      <DependentUpon>Messages.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MaterialsForm.en-GB.Designer.cs">
+      <DependentUpon>MaterialsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ProgressForm.en-GB.Designer.cs">
+      <DependentUpon>ProgressForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProgressForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashForm.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashForm.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemNotificationForm.en-GB.Designer.cs">
+      <DependentUpon>SystemNotificationForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropStatusForm.en-GB.Designer.cs">
+      <DependentUpon>PropStatusForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SettingsForm.en-GB.Designer.cs">
+      <DependentUpon>SettingsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SearchForm.en-GB.Designer.cs">
+      <DependentUpon>SearchForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RolesForm.en-GB.Designer.cs">
+      <DependentUpon>RolesForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RepositoryMaterialsForm.en-GB.Designer.cs">
+      <DependentUpon>RepositoryMaterialsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportPreviewForm.en-GB.Designer.cs">
+      <DependentUpon>ReportPreviewForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropsSelectorForm.en-GB.Designer.cs">
+      <DependentUpon>PropsSelectorForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MainForm.en-GB.Designer.cs">
+      <DependentUpon>MainForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LogsForm.en-GB.Designer.cs">
+      <DependentUpon>LogsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LoginForm.en-GB.Designer.cs">
+      <DependentUpon>LoginForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LabsForm.en-GB.Designer.cs">
+      <DependentUpon>LabsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LabPropsForm.en-GB.Designer.cs">
+      <DependentUpon>LabPropsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="InputForm.en-GB.Designer.cs">
+      <DependentUpon>InputForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SharedForm.en-GB.Designer.cs">
+      <DependentUpon>SharedForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UsersForm.en-GB.Designer.cs">
+      <DependentUpon>UsersForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropsForm.en-GB.Designer.cs">
+      <DependentUpon>PropsForm.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="InputForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InputForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LabPropsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabPropsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LabsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LogsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropsSelectorForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropsSelectorForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportPreviewForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportPreviewForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RepositoryMaterialsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryMaterialsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RolesForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RolesForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropStatusForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropStatusForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemNotificationForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemNotificationForm.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsersForm.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AccountForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriesForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoriesForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriesForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoriesForm.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProgressForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProgressForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemNotificationForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SystemNotificationForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropStatusForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropStatusForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolesForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RolesForm.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepositoryMaterialsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RepositoryMaterialsForm.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPreviewForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportPreviewForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsSelectorForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsSelectorForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginForm.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabPropsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabPropsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InputForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersForm.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsForm.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsForm.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InputForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabPropsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabPropsForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabsForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogsForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialsForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsSelectorForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsSelectorForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPreviewForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportPreviewForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepositoryMaterialsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RepositoryMaterialsForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolesForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RolesForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropStatusForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropStatusForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemNotificationForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SystemNotificationForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersForm.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,111 @@
+﻿<CustomControls:WindowBase x:Class="Phoenix.WPF.PropsSelectorWindow"
+                           MinHeight="500"
+                           MinWidth="500"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                           Style="{DynamicResource ResizableDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundLabProps.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock x:Name="tbTitle"
+                               Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource PropsSelectorResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource PropsSelectorResources}}" />
+                </StackPanel>
+                <my:AnimatedImage x:Name="aiLoader"
+                                  Grid.Column="3"
+                                  Style="{DynamicResource LoaderImage}"
+                                  x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Content="{Binding Path=AddToLab, Source={StaticResource PropsSelectorResources}}"
+                        Name="btnSelectProps"
+                        Click="BtnSelectPropsClick"
+                        IsDefault="True"
+                        x:FieldModifier="private" />
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ComboBox Name="cmbLabs"
+                          Grid.Row="0"
+                          SelectionChanged="SelectionChanged"
+                          Tag="{Binding Path=LabName, Source={StaticResource PropsSelectorResources}}"
+                          Width="250"
+                          HorizontalAlignment="Left"
+                          x:FieldModifier="private" />
+                <ComboBox Name="cmbCategories"
+                          Grid.Row="1"
+                          SelectionChanged="SelectionChanged"
+                          Tag="{Binding Path=CategoryName, Source={StaticResource PropsSelectorResources}}"
+                          Width="250"
+                          HorizontalAlignment="Left"
+                          Margin="0,5"
+                          x:FieldModifier="private" />
+                <ComboBox Name="cmbProps"
+                          Grid.Row="2"
+                          Margin="0,0,0,10"
+                          SelectionChanged="SelectionChanged"
+                          Tag="{Binding Path=PropName, Source={StaticResource PropsSelectorResources}}"
+                          Width="250"
+                          HorizontalAlignment="Left"
+                          IsEditable="True"
+                          KeyDown="CmbPropsKeyDown"
+                          x:FieldModifier="private" />
+                <my:PhoenixDataGrid Grid.Row="3"
+                                    x:Name="dgResults"
+                                    MouseDoubleClick="DgResultsMouseDoubleClick"
+                                    x:FieldModifier="private">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn Header="{Binding Path=Name, Source={StaticResource PropsResources}}"
+                                            Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="{Binding Path=PropNo, Source={StaticResource PropsResources}}"
+                                            Binding="{Binding StringPropNo}" />
+                        <DataGridTextColumn Header="{Binding Path=SerialNo, Source={StaticResource PropsResources}}"
+                                            Binding="{Binding StringSerialNo}" />
+                        <DataGridTextColumn Header="{Binding Path=Status, Source={StaticResource PropsResources}}"
+                                            Binding="{Binding StringStatus}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Grid.Row="1"
+                           Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NoResults, Source={StaticResource PropsSelectorResources}}"
+                           Name="tbNoResults"
+                           x:FieldModifier="private" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

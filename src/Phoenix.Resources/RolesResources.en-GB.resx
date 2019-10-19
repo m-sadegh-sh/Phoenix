@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CategoriesDelete" xml:space="preserve">
+    <value>Categories can be deleted.</value>
+  </data>
+  <data name="CategoriesDisplay" xml:space="preserve">
+    <value>Categories can be displayed.</value>
+  </data>
+  <data name="CategoriesInsert" xml:space="preserve">
+    <value>Be able to create new category.</value>
+  </data>
+  <data name="CategoriesUpdate" xml:space="preserve">
+    <value>Categories can be edited.</value>
+  </data>
+  <data name="LabProps" xml:space="preserve">
+    <value>Laboratories Properties</value>
+  </data>
+  <data name="LabPropsDelete" xml:space="preserve">
+    <value>Be able to remove the property from the laboratories.</value>
+  </data>
+  <data name="LabPropsDisplay" xml:space="preserve">
+    <value>Laboratories Properties can be displayed.</value>
+  </data>
+  <data name="LabPropsInsert" xml:space="preserve">
+    <value>Be able to devote properties to laboratories.</value>
+  </data>
+  <data name="LabPropsSearch" xml:space="preserve">
+    <value>Be able to search in Laboratories Properties.</value>
+  </data>
+  <data name="Labs" xml:space="preserve">
+    <value>Laboratories</value>
+  </data>
+  <data name="LabsDelete" xml:space="preserve">
+    <value>Labs can be deleted.</value>
+  </data>
+  <data name="LabsDisplay" xml:space="preserve">
+    <value>Labs can be displayed.</value>
+  </data>
+  <data name="LabsInsert" xml:space="preserve">
+    <value>Be able to create new Lab.</value>
+  </data>
+  <data name="LabsSearch" xml:space="preserve">
+    <value>Be able to search in Laboratories.</value>
+  </data>
+  <data name="LabsUpdate" xml:space="preserve">
+    <value>Labs can be edited.</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="LogsDelete" xml:space="preserve">
+    <value>Logs can be deleted.</value>
+  </data>
+  <data name="LogsDisplay" xml:space="preserve">
+    <value>Logs can be displayed.</value>
+  </data>
+  <data name="LogsSearch" xml:space="preserve">
+    <value>Be able to search in Logs.</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>Materials</value>
+  </data>
+  <data name="MaterialsDelete" xml:space="preserve">
+    <value>Materials can be deleted.</value>
+  </data>
+  <data name="MaterialsDisplay" xml:space="preserve">
+    <value>Materials can be displayed.</value>
+  </data>
+  <data name="MaterialsInsert" xml:space="preserve">
+    <value>Be able to create new Material.</value>
+  </data>
+  <data name="MaterialsSearch" xml:space="preserve">
+    <value>Be able to search in Materials.</value>
+  </data>
+  <data name="MaterialsUpdate" xml:space="preserve">
+    <value>Materials can be edited.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameDuplicate" xml:space="preserve">
+    <value>Role with that name is already registered.</value>
+  </data>
+  <data name="NameNull" xml:space="preserve">
+    <value>The Role Name can not be empty.</value>
+  </data>
+  <data name="NoResults" xml:space="preserve">
+    <value>No role was found.</value>
+  </data>
+  <data name="Props" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="PropsDelete" xml:space="preserve">
+    <value>Properties can be deleted.</value>
+  </data>
+  <data name="PropsDisplay" xml:space="preserve">
+    <value>Propertis can be displayed.</value>
+  </data>
+  <data name="PropsInsert" xml:space="preserve">
+    <value>Be able to create new Property.</value>
+  </data>
+  <data name="PropsSearch" xml:space="preserve">
+    <value>Be able to search in Properties.</value>
+  </data>
+  <data name="PropStatus" xml:space="preserve">
+    <value>Properties Status</value>
+  </data>
+  <data name="PropStatusDisplay" xml:space="preserve">
+    <value>Properties Status can be displayed.</value>
+  </data>
+  <data name="PropStatusUpdate" xml:space="preserve">
+    <value>Properties Status can be edited.</value>
+  </data>
+  <data name="PropsUpdate" xml:space="preserve">
+    <value>Items can be edited.</value>
+  </data>
+  <data name="Referenced" xml:space="preserve">
+    <value>Role {0} is used to specify other user(s) roles/permissions in system. Please resolve this issue by changing the role of user(s) of {0}.</value>
+  </data>
+  <data name="RolesDelete" xml:space="preserve">
+    <value>Roles can be deleted.</value>
+  </data>
+  <data name="RolesDisplay" xml:space="preserve">
+    <value>Roles can be displayed.</value>
+  </data>
+  <data name="RolesInsert" xml:space="preserve">
+    <value>Be able to create new Role.</value>
+  </data>
+  <data name="RolesSearch" xml:space="preserve">
+    <value>Be able to search in Roles.</value>
+  </data>
+  <data name="RolesUpdate" xml:space="preserve">
+    <value>Roles can be edited.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>Search by Role Name</value>
+  </data>
+  <data name="SearchDisplay" xml:space="preserve">
+    <value>Be able to Search/Report</value>
+  </data>
+  <data name="SearchNoResults" xml:space="preserve">
+    <value>No Role with spcified conditions found.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UsersDelete" xml:space="preserve">
+    <value>Users can be deleted.</value>
+  </data>
+  <data name="UsersDisplay" xml:space="preserve">
+    <value>Users can be displayed.</value>
+  </data>
+  <data name="UsersInsert" xml:space="preserve">
+    <value>Be able to create new User.</value>
+  </data>
+  <data name="UsersUpdate" xml:space="preserve">
+    <value>Users can be edited.</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created On</value>
+  </data>
+  <data name="LastModifiedOn" xml:space="preserve">
+    <value>Last Modified On</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Defined user access levels to different parts of the program</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="ItemsDelete" xml:space="preserve">
+    <value> Items can be deleted.</value>
+  </data>
+  <data name="ItemsDisplay" xml:space="preserve">
+    <value>Items can be displayed.</value>
+  </data>
+  <data name="ItemsInsert" xml:space="preserve">
+    <value>Be able to create new Item.</value>
+  </data>
+  <data name="ItemsSearch" xml:space="preserve">
+    <value>Be able to search in Items.</value>
+  </data>
+  <data name="ItemsUpdate" xml:space="preserve">
+    <value>Items can be edited.</value>
+  </data>
+  <data name="RepositoryMaterialsAndItems" xml:space="preserve">
+    <value>Allocate/Return Materials and Items</value>
+  </data>
+  <data name="RepositoryMaterialsAndItemsInsert" xml:space="preserve">
+    <value>Be able to submit new Allocate/Return Materials and Items.</value>
+  </data>
+  <data name="CategoriesSearch" xml:space="preserve">
+    <value>Be able to search in categories.</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="RepositoryMaterialsAndItemsDelete" xml:space="preserve">
+    <value>Allocated/Returned Materials and Items can be deleted.</value>
+  </data>
+  <data name="AccessibilityPercent" xml:space="preserve">
+    <value>Accessibility Percentage</value>
+  </data>
+  <data name="AboutNPercent" xml:space="preserve">
+    <value>About {0} percent</value>
+  </data>
+  <data name="ZeroAccessibility" xml:space="preserve">
+    <value>No access</value>
+  </data>
+  <data name="FullAccessibility" xml:space="preserve">
+    <value>Full access</value>
+  </data>
+  <data name="RepositoryItemsSearch" xml:space="preserve">
+    <value>Be able to search in Allocate/Return Materials and Items</value>
+  </data>
+  <data name="RepositoryMaterialsSearch" xml:space="preserve">
+    <value>Be able to search in Allocate/Return Materials and Items</value>
+  </data>
+</root>

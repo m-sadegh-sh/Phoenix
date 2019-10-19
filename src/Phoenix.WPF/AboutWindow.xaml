@@ -1,0 +1,83 @@
+<CustomControls:WindowBase x:Class="Phoenix.WPF.AboutWindow"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           Style="{DynamicResource FixedDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsDefault="True"
+                        IsCancel="True"
+                        Click="BtnCloseClick" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Width="500"
+                   Height="302"
+                   Style="{DynamicResource Content}">
+            <Grid>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Text="{Binding Path=CompanyName, Source={StaticResource MainResources}}" />
+                    <TextBlock Margin="0,10,0,0"
+                               Grid.Row="1"
+                               TextAlignment="Right"
+                               Text="{Binding Path=Programmer, Source={StaticResource AboutResources}}" />
+                    <TextBlock Grid.Row="2"
+                               TextAlignment="Right"
+                               Foreground="Gray"
+                               FontStyle="Italic"
+                               Text="{Binding Path=ProgrammerNumber, Source={StaticResource AboutResources}}" />
+                    <TextBlock Grid.Row="3"
+                               FontFamily="Segoe UI"
+                               TextAlignment="Right"
+                               Foreground="Gray"
+                               FontStyle="Italic"
+                               Text="{Binding Path=ProgrammerEmail, Source={StaticResource AboutResources}}" />
+                    <TextBlock Margin="0,10,0,0"
+                               Grid.Row="4"
+                               TextAlignment="Right"
+                               Text="{Binding Path=Analyzer, Source={StaticResource AboutResources}}" />
+                    <TextBlock Grid.Row="5"
+                               TextAlignment="Right"
+                               Foreground="Gray"
+                               FontStyle="Italic"
+                               Text="{Binding Path=AnalyzerNumber, Source={StaticResource AboutResources}}" />
+                    <TextBlock Grid.Row="6"
+                               FontFamily="Segoe UI"
+                               TextAlignment="Right"
+                               Foreground="Gray"
+                               FontStyle="Italic"
+                               Text="{Binding Path=AnalyzerEmail, Source={StaticResource AboutResources}}" />
+                    <TextBlock Grid.Row="7"
+                               TextAlignment="Right"
+                               Name="tbVersion"
+                               Foreground="Gray"
+                               x:FieldModifier="private" />
+                    <TextBlock Grid.Row="8"
+                               Text="{Binding Path=AppDetails, Source={StaticResource AboutResources}}"
+                               Foreground="Gray" />
+                </Grid>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

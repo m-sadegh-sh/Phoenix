@@ -1,0 +1,11 @@
+﻿<CustomControls:WindowBase x:Class="Phoenix.WPF.ChildWindows.BlankWindow"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           Style="{DynamicResource FixedDialog}"
+                           Background="#83000000"
+                           WindowStyle="None"
+                           WindowState="Maximized"
+                           SizeToContent="Manual"
+                           AllowsTransparency="True">
+</CustomControls:WindowBase>

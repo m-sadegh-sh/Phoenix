@@ -1,0 +1,167 @@
+<CustomControls:WindowBase xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure" x:Class="Phoenix.WPF.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Commands="clr-namespace:Phoenix.WPF.Commands" xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls" Title="{Binding Path=Text, ElementName=tbTitle}" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
+	<DockPanel>
+		<DockPanel Style="{DynamicResource WindowHeader}" DockPanel.Dock="Top">
+			<Grid Style="{DynamicResource WindowHeaderGrid}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Image Style="{DynamicResource WindowIcon}" Source="/Resources/Icons/WinForms.ico" />
+				<StackPanel Grid.Column="1">
+					<TextBlock x:Name="tbTitle" Style="{DynamicResource WindowTitle}" Text="{Binding Path=Title, Source={StaticResource MainResources}}" />
+					<TextBlock Style="{DynamicResource WindowDescription}" Text="{Binding Path=Description, Source={StaticResource MainResources}}" />
+				</StackPanel>
+				<my:AnimatedImage x:Name="aiLoader" Grid.Column="3" Style="{DynamicResource LoaderImage}" />
+				<StackPanel Visibility="Hidden" Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Name="spLinks">
+					<TextBlock Name="tbNewMessages" Style="{DynamicResource NonContentText}" />
+					<TextBlock Visibility="Collapsed" Style="{DynamicResource Separator}" Name="tbSep1" />
+					<TextBlock>
+						<Hyperlink Name="hlShowNotificationsWindow" Command="Commands:CommandLibrary.ShowNotificationsWindow">
+							<Run Text="{Binding ElementName=hlShowNotificationsWindow, Path=Command.Text}" />
+						</Hyperlink>
+					</TextBlock>
+					<TextBlock Style="{DynamicResource Separator}" />
+					<TextBlock Style="{DynamicResource NonContentText}" Name="tbUserName" />
+					<TextBlock Style="{DynamicResource Separator}" />
+					<TextBlock>
+						<Hyperlink Name="hlOpenAccountWindow" Command="Commands:CommandLibrary.OpenAccountWindow">
+							<Run Text="{Binding ElementName=hlOpenAccountWindow, Path=Command.Text}" />
+						</Hyperlink>
+					</TextBlock>
+					<TextBlock Style="{DynamicResource Separator}" />
+					<TextBlock>
+						<Hyperlink Name="hlShutdownPhoenix" Command="Commands:CommandLibrary.ShutdownPhoenix">
+							<Run Text="{Binding ElementName=hlShutdownPhoenix, Path=Command.Text}" />
+						</Hyperlink>
+					</TextBlock>
+				</StackPanel>
+			</Grid>
+		</DockPanel>
+		<DockPanel Style="{DynamicResource WindowFooter}" DockPanel.Dock="Bottom">
+			<Grid Style="{DynamicResource WindowFooterGrid}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0" Orientation="Horizontal"></StackPanel>
+				<TextBlock Grid.Column="0" Name="tbDate" Style="{DynamicResource NonContentText}" />
+				<TextBlock Grid.Column="1" Style="{DynamicResource NonContentText}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=IAUQ, Source={StaticResource MainResources}}" />
+				<TextBlock Grid.Column="2" Style="{DynamicResource NonContentText}" Text="{Binding Path=BetaVersion, Source={StaticResource MainResources}}" />
+			</Grid>
+		</DockPanel>
+		<DockPanel Name="dpWindowContent" LastChildFill="True" DockPanel.Dock="Bottom" Style="{DynamicResource WindowContent}">
+			<Menu Name="menu" Visibility="Hidden" DockPanel.Dock="Top" FontFamily="{Binding ElementName=tbTitle, Path=FontFamily}">
+				<MenuItem Header="{Binding Path=ManagementHeader, Source={StaticResource MainResources}}">
+					<MenuItem Name="miShowNotificationsWindow" Command="Commands:CommandLibrary.ShowNotificationsWindow" />
+					<Separator />
+					<MenuItem Name="miOpenCategoriesWindow" Command="Commands:CommandLibrary.OpenCategoriesWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundCategories.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenPropsWindow" Command="Commands:CommandLibrary.OpenPropsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundProps.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenPropsStatusWindow" Command="Commands:CommandLibrary.OpenPropsStatusWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundPropStatus.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenLabsWindow" Command="Commands:CommandLibrary.OpenLabsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundLabs.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenLabPropsWindow" Command="Commands:CommandLibrary.OpenLabPropsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundLabProps.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenMaterialsWindow" Command="Commands:CommandLibrary.OpenMaterialsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundMaterials.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenItemsWindow" Command="Commands:CommandLibrary.OpenItemsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundItems.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenRepositoryMaterialsAndItemsWindow" Command="Commands:CommandLibrary.OpenRepositoryMaterialsAndItemsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundRepositoryMaterialsAndItems.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<Separator />
+					<MenuItem Name="miShutdownPhoenix" Command="Commands:CommandLibrary.ShutdownPhoenix">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/Exit.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+				</MenuItem>
+				<MenuItem Name="miOpenSearchWindow" Command="Commands:CommandLibrary.OpenSearchWindow">
+					<MenuItem Name="miOpenSearchWindowInProps" Command="Commands:CommandLibrary.OpenSearchWindowInProps" />
+					<MenuItem Name="miOpenSearchWindowInMaterials" Command="Commands:CommandLibrary.OpenSearchWindowInMaterials" />
+					<MenuItem Name="miOpenSearchWindowInRepositoryMaterials" Command="Commands:CommandLibrary.OpenSearchWindowInRepositoryMaterials" />
+					<MenuItem Name="miOpenSearchWindowInItems" Command="Commands:CommandLibrary.OpenSearchWindowInItems" />
+					<MenuItem Name="miOpenSearchWindowInRepositoryItems" Command="Commands:CommandLibrary.OpenSearchWindowInRepositoryItems" />
+					<MenuItem Name="miOpenSearchWindowInLabs" Command="Commands:CommandLibrary.OpenSearchWindowInLabs" />
+					<MenuItem Name="miOpenSearchWindowInLabProps" Command="Commands:CommandLibrary.OpenSearchWindowInLabProps" />
+					<MenuItem Name="miOpenSearchWindowInLogs" Command="Commands:CommandLibrary.OpenSearchWindowInLogs" />
+				</MenuItem>
+				<MenuItem Header="{Binding Path=OptionsHeader, Source={StaticResource MainResources}}">
+					<MenuItem Name="miOpenAccountWindow" Command="Commands:CommandLibrary.OpenAccountWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/User.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<Separator />
+					<MenuItem Name="miOpenBackupWindow" Command="Commands:CommandLibrary.OpenBackupWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundBackup.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenRestoreWindow" Command="Commands:CommandLibrary.OpenRestoreWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundRestore.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<Separator />
+					<MenuItem Name="miOpenRolesWindow" Command="Commands:CommandLibrary.OpenRolesWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundRoles.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<MenuItem Name="miOpenUsersWindow" Command="Commands:CommandLibrary.OpenUsersWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundUsers.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<Separator />
+					<MenuItem Name="miOpenLogsWindow" Command="Commands:CommandLibrary.OpenLogsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundLogs.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+					<Separator />
+					<MenuItem Name="miOpenSettingsWindow" Command="Commands:CommandLibrary.OpenSettingsWindow">
+						<MenuItem.Icon>
+							<Image Source="/Resources/Images/SectionBackgroundSettings.png" Width="20" Height="20" />
+						</MenuItem.Icon>
+					</MenuItem>
+				</MenuItem>
+				<MenuItem Header="{Binding Path=HelpHeader, Source={StaticResource MainResources}}">
+					<MenuItem Name="miOpenAboutWindow" Command="Commands:CommandLibrary.OpenAboutWindow" />
+				</MenuItem>
+			</Menu>
+			<Image Source="/Resources/Images/Lab.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" Height="399" Width="438" />
+
+		</DockPanel>
+	</DockPanel>
+</CustomControls:WindowBase>

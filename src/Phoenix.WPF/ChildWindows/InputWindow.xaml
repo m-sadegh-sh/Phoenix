@@ -1,0 +1,64 @@
+<CustomControls:WindowBase x:Class="Phoenix.WPF.ChildWindows.InputWindow"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           Style="{DynamicResource FixedDialog}"
+                           MinWidth="400"
+                           MaxWidth="700">
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+                    <Button Content="{Binding Path=Cancel, Source={StaticResource SharedResources}}"
+                            Click="BtnCancelClick"
+                            IsCancel="True" />
+                    <Button Content="{Binding Path=OK, Source={StaticResource SharedResources}}"
+                            Click="BtnOKClick"
+                            IsDefault="True" />
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0"
+                       x:Name="imgIcon"
+                       Height="32"
+                       Width="32"
+                       VerticalAlignment="Top"
+                       x:FieldModifier="private" />
+                <StackPanel Grid.Column="1"
+                            Margin="10">
+                    <TextBlock Name="tbMessage"
+                               TextWrapping="Wrap"
+                               x:FieldModifier="private" />
+                    <TextBox x:Name="tbValue"
+                             Margin="0,10,0,0"
+                             Visibility="Collapsed"
+                             x:FieldModifier="private" />
+                    <ComboBox Name="cmbValues"
+                              Visibility="Collapsed"
+                              Margin="0,10,0,0"
+                              x:FieldModifier="private" />
+                    <TextBlock x:Name="tbValidationMessage"
+                               Text="{Binding Path=Invalid, Source={StaticResource InputResources}}"
+                               Visibility="Hidden"
+                               Foreground="Red"
+                               Margin="0,10,0,0"
+                               TextWrapping="Wrap"
+                               x:FieldModifier="private" />
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:WindowBase>

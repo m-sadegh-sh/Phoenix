@@ -1,0 +1,88 @@
+﻿<CustomControls:UserControlBase x:Class="Phoenix.WPF.Views.LogsView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:Logs="clr-namespace:Phoenix.WPF.ViewModels.Logs"
+                                xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                                mc:Ignorable="d"
+                                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                xmlns:Behaviours="clr-namespace:Phoenix.Infrastructure.Wpf.Behaviours;assembly=Phoenix.Infrastructure"
+                                xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                                d:DesignHeight="457"
+                                d:DesignWidth="912">
+    <UserControl.DataContext>
+        <Logs:LogsViewModel />
+    </UserControl.DataContext>
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundLogs.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource LogsResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource LogsResources}}" />
+                </StackPanel>
+                <my:AnimatedImage Grid.Column="3"
+                                  Visibility="{Binding FrozenVisibility}"
+                                  Style="{DynamicResource LoaderImage}" />
+                <DockPanel Style="{DynamicResource SearchContainer}"
+                           Grid.Column="4">
+                    <TextBox Style="{DynamicResource SearchTextBox}"
+                             Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Tag="{Binding Path=SearchBy, Source={StaticResource LogsResources}}" />
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding DeleteCommand}"
+                            Content="{Binding Path=Delete, Source={StaticResource SharedResources}}"
+                            IsDefault="True" />
+                </StackPanel>
+                <Button Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        Command="{Binding ExitCommand}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <my:PhoenixDataGrid ItemsSource="{Binding ModelItems}"
+                                    Behaviours:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedItems}"
+                                    Visibility="{Binding Path=HasResultsVisibility}">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn Header="{Binding Path=Details, Source={StaticResource LogsResources}}"
+                                            Width="*"
+                                            Binding="{Binding Details}" />
+                        <DataGridTextColumn Header="{Binding Path=LoggedOn, Source={StaticResource LogsResources}}"
+                                            Binding="{Binding StringLoggedOn}" />
+                        <DataGridTextColumn Header="{Binding Path=PerformedBy, Source={StaticResource LogsResources}}"
+                                            Binding="{Binding StringPerformedBy}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Style="{DynamicResource NoResults}"
+                           Text="{Binding Path=NoResults, Source={StaticResource LogsResources}}"
+                           Visibility="{Binding Path=NoResultsVisibility}" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:UserControlBase>

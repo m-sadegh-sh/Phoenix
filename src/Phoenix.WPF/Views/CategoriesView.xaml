@@ -1,0 +1,115 @@
+﻿<CustomControls:UserControlBase x:Class="Phoenix.WPF.Views.CategoryView"
+                                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                xmlns:ViewModels="clr-namespace:Phoenix.WPF.ViewModels.Categories"
+                                xmlns:my="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+                                xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                                xmlns:Behaviours="clr-namespace:Phoenix.Infrastructure.Wpf.Behaviours;assembly=Phoenix.Infrastructure">
+    <UserControl.DataContext>
+        <ViewModels:CategoriesViewModel />
+    </UserControl.DataContext>
+    <DockPanel>
+        <DockPanel Style="{DynamicResource WindowHeader}"
+                   DockPanel.Dock="Top">
+            <Grid Style="{DynamicResource WindowHeaderGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{DynamicResource WindowIcon}"
+                       Source="/Resources/Images/SectionBackgroundCategories.png" />
+                <StackPanel Grid.Column="1">
+                    <TextBlock Style="{DynamicResource WindowTitle}"
+                               Text="{Binding Path=Title, Source={StaticResource CategoriesResources}}" />
+                    <TextBlock Style="{DynamicResource WindowDescription}"
+                               Text="{Binding Path=Description, Source={StaticResource CategoriesResources}}" />
+                </StackPanel>
+                <my:AnimatedImage Grid.Column="3"
+                                  Visibility="{Binding FrozenVisibility}"
+                                  Style="{DynamicResource LoaderImage}" />
+                <DockPanel Style="{DynamicResource SearchContainer}"
+                           Grid.Column="4">
+                    <TextBox Style="{DynamicResource SearchTextBox}"
+                             Text="{Binding SearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Tag="{Binding Path=SearchBy, Source={StaticResource CategoriesResources}}" />
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+        <DockPanel Style="{DynamicResource WindowFooter}"
+                   DockPanel.Dock="Bottom">
+            <Grid Style="{DynamicResource WindowFooterGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding InsertCommand}"
+                            Content="{Binding Path=Submit, Source={StaticResource SharedResources}}"
+                            IsDefault="True" />
+                    <Button Command="{Binding ResetCommand}"
+                            Content="{Binding Path=CancelChanges, Source={StaticResource SharedResources}}" />
+                    <Button Command="{Binding DeleteCommand}"
+                            Content="{Binding Path=Delete, Source={StaticResource SharedResources}}" />
+                </StackPanel>
+                <Button Command="{Binding ExitCommand}"
+                        Grid.Column="2"
+                        Content="{Binding Path=Exit, Source={StaticResource SharedResources}}"
+                        IsCancel="True" />
+            </Grid>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom"
+                   Style="{DynamicResource WindowContent}">
+            <Grid Style="{DynamicResource WindowContentGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel DataContext="{Binding Path=CurrentItem, UpdateSourceTrigger=PropertyChanged}"
+                            Grid.Row="0"
+                            Orientation="Horizontal"
+                            Margin="0,0,0,10">
+                    <StackPanel FocusManager.FocusedElement="{Binding ElementName=CategoryName}">
+                        <TextBox Name="CategoryName"
+                                 Text="{Binding Name, ValidatesOnExceptions=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="250"
+                                 Tag="{Binding Path=Name, Source={StaticResource CategoriesResources}}" />
+                    </StackPanel>
+                    <StackPanel Margin="5,0,0,0">
+                        <TextBox Style="{StaticResource Multiline}"
+                                 Text="{Binding Path=Description,Mode=TwoWay,ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="250"
+                                 Height="100"
+                                 Tag="{Binding Path=Description, Source={StaticResource SharedResources}}" />
+                    </StackPanel>
+                </StackPanel>
+                <my:PhoenixDataGrid Grid.Row="1"
+                                    ItemsSource="{Binding ModelItems}"
+                                    Behaviours:MultiSelectorBehaviours.SynchronizedSelectedItems="{Binding SelectedItems}"
+                                    Visibility="{Binding Path=HasResultsVisibility}"
+                                    Behaviours:CommandBehavior.Event="MouseDoubleClick"
+                                    Behaviours:CommandBehavior.Command="{Binding SelectCommand}">
+                    <my:PhoenixDataGrid.Columns>
+                        <DataGridTextColumn Width="*"
+                                            Header="{Binding Path=Name, Source={StaticResource CategoriesResources}}"
+                                            Binding="{Binding Name}" />
+                        <DataGridTextColumn
+Header="{Binding Path=CreatedOn, Source={StaticResource CategoriesResources}}"
+Binding="{Binding StringCreatedOn}" />
+                        <DataGridTextColumn
+Header="{Binding Path=LastModifiedOn, Source={StaticResource CategoriesResources}}"
+Binding="{Binding StringLastModifiedOn}" />
+                    </my:PhoenixDataGrid.Columns>
+                </my:PhoenixDataGrid>
+                <TextBlock Grid.Row="1"
+                           Style="{DynamicResource NoResults}"
+                           Visibility="{Binding Path=NoResultsVisibility}"
+                           Text="{Binding Path=NoResults, Source={StaticResource CategoriesResources}}" />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</CustomControls:UserControlBase>

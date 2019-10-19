@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../WindowBase.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="TreeView"
+           x:Key="SearchPane">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/Red/SearchPane.png" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

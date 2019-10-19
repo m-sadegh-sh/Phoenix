@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D600CF43-C808-4A83-B9B0-3255A9191172}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Phoenix.Resources</RootNamespace>
+    <AssemblyName>Phoenix.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CategoriesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AccountResources.en-GB.Designer.cs">
+      <DependentUpon>AccountResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CategoriesResources.en-GB.Designer.cs">
+      <DependentUpon>CategoriesResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AboutResources.Designer.cs">
+      <DependentUpon>AboutResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AboutResources.en-GB.Designer.cs">
+      <DependentUpon>AboutResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BackupResources.Designer.cs">
+      <DependentUpon>BackupResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BackupResources.en-GB.Designer.cs">
+      <DependentUpon>BackupResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="ItemsResources.Designer.cs">
+      <DependentUpon>ItemsResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ItemsResources.en-GB.Designer.cs">
+      <DependentUpon>ItemsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RestoreResources.Designer.cs">
+      <DependentUpon>RestoreResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RestoreResources.en-GB.Designer.cs">
+      <DependentUpon>RestoreResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MessagesResources.en-GB.Designer.cs">
+      <DependentUpon>MessagesResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MaterialsResources.en-GB.Designer.cs">
+      <DependentUpon>MaterialsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ProgressResources.en-GB.Designer.cs">
+      <DependentUpon>ProgressResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ProgressResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProgressResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashResources.en-GB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashResources.en-GB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationsResources.en-GB.Designer.cs">
+      <DependentUpon>NotificationsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropStatusResources.en-GB.Designer.cs">
+      <DependentUpon>PropStatusResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SettingsResources.en-GB.Designer.cs">
+      <DependentUpon>SettingsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SearchResources.en-GB.Designer.cs">
+      <DependentUpon>SearchResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RolesResources.en-GB.Designer.cs">
+      <DependentUpon>RolesResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RepositoryMaterialsAndItemsResources.en-GB.Designer.cs">
+      <DependentUpon>RepositoryMaterialsAndItemsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportPreviewResources.en-GB.Designer.cs">
+      <DependentUpon>ReportPreviewResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropsSelectorResources.en-GB.Designer.cs">
+      <DependentUpon>PropsSelectorResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="MainResources.en-GB.Designer.cs">
+      <DependentUpon>MainResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LogsResources.en-GB.Designer.cs">
+      <DependentUpon>LogsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LoginResources.en-GB.Designer.cs">
+      <DependentUpon>LoginResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LabsResources.en-GB.Designer.cs">
+      <DependentUpon>LabsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="LabPropsResources.en-GB.Designer.cs">
+      <DependentUpon>LabPropsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="InputResources.en-GB.Designer.cs">
+      <DependentUpon>InputResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SharedResources.en-GB.Designer.cs">
+      <DependentUpon>SharedResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UsersResources.en-GB.Designer.cs">
+      <DependentUpon>UsersResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PropsResources.en-GB.Designer.cs">
+      <DependentUpon>PropsResources.en-GB.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="InputResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InputResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LabPropsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabPropsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LabsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="LogsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MainResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterialsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MessagesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropsSelectorResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropsSelectorResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportPreviewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportPreviewResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RepositoryMaterialsAndItemsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryMaterialsAndItemsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RolesResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RolesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PropStatusResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropStatusResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotificationsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UsersResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsersResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AccountResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoriesResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccountResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AccountResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriesResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoriesResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AboutResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BackupResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BackupResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ItemsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ItemsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestoreResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RestoreResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestoreResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RestoreResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessagesResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessagesResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProgressResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProgressResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropStatusResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropStatusResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolesResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RolesResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepositoryMaterialsAndItemsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RepositoryMaterialsAndItemsResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPreviewResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportPreviewResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsSelectorResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsSelectorResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabPropsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabPropsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InputResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersResources.en-GB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsResources.en-GB.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsResources.en-GB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InputResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabPropsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabPropsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LabsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LabsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoginResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessagesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MessagesResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsSelectorResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsSelectorResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPreviewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportPreviewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepositoryMaterialsAndItemsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RepositoryMaterialsAndItemsResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RolesResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RolesResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SearchResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PropStatusResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropStatusResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotificationsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

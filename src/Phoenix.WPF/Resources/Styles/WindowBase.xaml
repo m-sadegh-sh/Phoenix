@@ -1,0 +1,263 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                    xmlns:Helpers="clr-namespace:Phoenix.WPF.Helpers"
+                    xmlns:Infrastructure="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Shared.xaml" />
+        <ResourceDictionary Source="CueFacilities.xaml" />
+        <ResourceDictionary>
+            <ObjectDataProvider x:Key="MainResources"
+                                ObjectType="{x:Type Helpers:CultureResources}"
+                                MethodName="GetMainResourcesResourceInstance" />
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="{x:Type Hyperlink}"
+           x:Key="BaseHyperlink">
+        <Setter Property="TextBlock.TextDecorations"
+                Value="{x:Null}" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}"
+           x:Key="For">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
+    </Style>
+    <Style x:Key="headerFooterRowStyle"
+           TargetType="{x:Type TableRowGroup}">
+        <Setter Property="FontWeight"
+                Value="DemiBold" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="Background"
+                Value="LightGray" />
+    </Style>
+
+    <Style x:Key="dataRowStyle"
+           TargetType="{x:Type TableRowGroup}">
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+
+    <Style TargetType="{x:Type TableCell}">
+        <Setter Property="Padding"
+                Value="0.1cm" />
+        <Setter Property="BorderBrush"
+                Value="Black" />
+        <Setter Property="BorderThickness"
+                Value="0.01cm" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}"
+           x:Key="ReadOnlyBlock">
+        <Setter Property="FontWeight"
+                Value="Bold" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}"
+           x:Key="ForLarge"
+           BasedOn="{StaticResource For}">
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="Margin"
+                Value="0,7,5,0" />
+    </Style>
+    <Style TargetType="{x:Type Grid}"
+           x:Key="NextSec">
+        <Setter Property="Margin"
+                Value="10,0,0,0" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}"
+           x:Key="SecDetailer">
+        <Setter Property="TextWrapping"
+                Value="WrapWithOverflow" />
+        <Setter Property="TextAlignment"
+                Value="Justify" />
+    </Style>
+    <Style TargetType="CustomControls:WindowBase"
+           x:Key="FixedDialog">
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
+        <Setter Property="ShowInTaskbar"
+                Value="False" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+    </Style>
+    <Style TargetType="CustomControls:WindowBase"
+           x:Key="FrozenDialog">
+        <Setter Property="SizeToContent"
+                Value="Height" />
+        <Setter Property="ShowInTaskbar"
+                Value="False" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+    </Style>
+    <Style TargetType="CustomControls:WindowBase"
+           x:Key="ResizableDialog">
+        <Setter Property="ShowInTaskbar"
+                Value="False" />
+        <Setter Property="Height"
+                Value="{Binding RelativeSource={RelativeSource Self}, Path=MinHeight}" />
+        <Setter Property="Width"
+                Value="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" />
+    </Style>
+    <Style TargetType="CustomControls:WindowBase"
+           x:Key="FixedAndAutoSizeDialog">
+        <Setter Property="SizeToContent"
+                Value="Manual" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+    </Style>
+    <Style TargetType="DockPanel"
+           x:Key="BaseWindowHeader">
+        <Setter Property="Height"
+                Value="67" />
+    </Style>
+    <Style TargetType="Infrastructure:PhoenixDataGrid">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="IsReadOnly"
+                Value="True" />
+        <Setter Property="GridLinesVisibility"
+                Value="None" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseNonContentText">
+        <Setter Property="FontSize"
+                Value="12" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseSeparator">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="Margin"
+                Value="5,0" />
+        <Setter Property="Text">
+            <Setter.Value>
+                <Binding Path="Separator"
+                         Source="{StaticResource MainResources}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseSectionTitle">
+        <Setter Property="FontWeight"
+                Value="Bold" />
+    </Style>
+    <Style TargetType="Grid"
+           x:Key="WindowContentGrid">
+        <Setter Property="Margin"
+                Value="10" />
+    </Style>
+    <Style TargetType="StackPanel"
+           x:Key="WindowContentStackPanel">
+        <Setter Property="Margin"
+                Value="10" />
+    </Style>
+    <Style TargetType="DockPanel"
+           x:Key="BaseSectionContainer">
+        <Setter Property="Width"
+                Value="311" />
+        <Setter Property="Height"
+                Value="147" />
+    </Style>
+    <Style TargetType="DockPanel"
+           x:Key="BaseWindowFooter">
+        <Setter Property="Height"
+                Value="50" />
+    </Style>
+    <Style TargetType="Infrastructure:AnimatedImage"
+           x:Key="LoaderImage">
+        <Setter Property="Height"
+                Value="11" />
+        <Setter Property="Width"
+                Value="16" />
+        <Setter Property="Margin"
+                Value="10,0" />
+        <Setter Property="Stretch"
+                Value="None" />
+        <Setter Property="Visibility"
+                Value="Collapsed" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseNoResults">
+        <Setter Property="Foreground"
+                Value="Silver" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="Padding"
+                Value="20,2" />
+        <Setter Property="Margin"
+                Value="2" />
+    </Style>
+    <Style TargetType="Grid"
+           x:Key="WindowHeaderGrid">
+        <Setter Property="Margin"
+                Value="10,5,10,20" />
+    </Style>
+    <Style TargetType="Grid"
+           x:Key="WindowFooterGrid">
+        <Setter Property="Margin"
+                Value="8" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+    </Style>
+    <Style TargetType="Image"
+           x:Key="WindowIcon">
+        <Setter Property="Grid.Column"
+                Value="0" />
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseWindowTitle">
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="Margin"
+                Value="0,5,0,0" />
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="BaseWindowDescription">
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Foreground"
+                Value="Silver" />
+    </Style>
+    <Style TargetType="Panel"
+           x:Key="SearchContainer">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/Resources/Images/SearchContainer.png" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width"
+                Value="296" />
+        <Setter Property="Height"
+                Value="32" />
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="SearchTextBox"
+           BasedOn="{StaticResource CueTextBox}">
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Margin"
+                Value="6,5,31,5" />
+    </Style>
+</ResourceDictionary>

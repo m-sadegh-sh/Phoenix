@@ -1,0 +1,18 @@
+<Application x:Class="Phoenix.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Infrastructure="clr-namespace:Phoenix.Infrastructure;assembly=Phoenix.Infrastructure"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Shared.xaml" />
+                <ResourceDictionary Source="Resources/Styles/WindowBase.xaml" />
+                <ResourceDictionary Source="Resources/Styles/CueFacilities.xaml" />
+                <ResourceDictionary Source="Resources/CulturesResourceDictionary.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Blue/WindowBase.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Infrastructure:InputGestureCollectionToStringConverter x:Key="GestureConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,54 @@
+﻿<?xml version='1.0'
+      encoding='utf-8' ?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings"
+              CurrentProfile="(Default)"
+              GeneratedClassNamespace="Phoenix.WPF.Properties"
+              GeneratedClassName="Settings">
+    <Profiles />
+    <Settings>
+        <Setting Name="ModeIndex"
+                 Type="System.Int32"
+                 Scope="User">
+            <Value Profile="(Default)">-1</Value>
+        </Setting>
+        <Setting Name="Culture"
+                 Type="System.String"
+                 Scope="User">
+            <Value Profile="(Default)">fa-IR</Value>
+        </Setting>
+        <Setting Name="Theme"
+                 Type="System.Int32"
+                 Scope="User">
+            <Value Profile="(Default)">0</Value>
+        </Setting>
+        <Setting Name="BackupPath"
+                 Type="System.String"
+                 Scope="User">
+            <Value Profile="(Default)" />
+        </Setting>
+        <Setting Name="BackupFileNamingFormat"
+                 Type="System.Int32"
+                 Scope="User">
+            <Value Profile="(Default)">0</Value>
+        </Setting>
+        <Setting Name="ReportDescription"
+                 Type="System.String"
+                 Scope="User">
+            <Value Profile="(Default)">
+                این نسخه ققنوس آزمایشی است.
+            </Value>
+        </Setting>
+        <Setting Name="ReportTitle"
+                 Type="System.String"
+                 Scope="User">
+            <Value Profile="(Default)">
+                ققنوس: سیستم مدیریت آزمایشگاه‌ها
+            </Value>
+        </Setting>
+        <Setting Name="ResetPennding"
+                 Type="System.Boolean"
+                 Scope="User">
+            <Value Profile="(Default)">False</Value>
+        </Setting>
+    </Settings>
+</SettingsFile>

@@ -1,0 +1,11 @@
+﻿<CustomControls:WindowBase xmlns:my1="clr-namespace:Phoenix.WPF.Views"
+                           x:Class="Phoenix.WPF.LogsWindow"
+                           MinHeight="600"
+                           MinWidth="900"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls"
+                           Style="{DynamicResource ResizableDialog}"
+                           Title="{Binding Path=Text, ElementName=tbTitle}">
+    <my1:LogsView />
+</CustomControls:WindowBase>

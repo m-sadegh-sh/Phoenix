@@ -1,0 +1,3 @@
+﻿<CustomControls:WindowBase x:Class="Phoenix.WPF.CategoriesWindow" MinWidth="700" MinHeight="500" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Helpers="clr-namespace:Phoenix.WPF.Helpers" xmlns:CustomControls="clr-namespace:Phoenix.WPF.CustomControls" xmlns:Views="clr-namespace:Phoenix.WPF.Views" Style="{DynamicResource ResizableDialog}" Title="{Binding Path=Text, ElementName=tbTitle}">
+	<Views:CategoryView />
+</CustomControls:WindowBase>
